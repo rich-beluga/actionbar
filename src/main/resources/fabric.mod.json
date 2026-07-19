@@ -1,0 +1,24 @@
+{
+    "schemaVersion": 1,
+    "id": "actionbar",
+    "version": "${version}",
+    "name": "ActionBar+",
+    "description": "Shows in-game time and weather above the hotbar.",
+    "authors": [
+        "rich_beluga"
+    ],
+    "contact": {},
+    "license": "MIT",
+    "environment": "client",
+    "entrypoints": {
+        "client": [
+            "com.rich_beluga.actionbar.ActionBarInfoClient"
+        ]
+    },
+    "depends": {
+        "fabricloader": ">=0.16.10",
+        "minecraft": "~1.21.8",
+        "java": ">=21",
+        "fabric-api": "*"
+    }
+}
