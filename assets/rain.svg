@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="36.0" height="36.0" viewBox="0 0 16.0 16.0">
+  <g>
+    <path d="M5,3h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M6,3h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M7,3h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M3,4h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M4,4h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M5,4h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M6,4h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M7,4h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M8,4h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M9,4h1v1h-1z"   fill="#5A616B" />
+    <path d="M2,5h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M3,5h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M4,5h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M5,5h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M6,5h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M7,5h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M8,5h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M9,5h1v1h-1z"   fill="#808996" />
+    <path d="M10,5h1v1h-1z"  fill="#5A616B" />
+    <path d="M2,6h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M3,6h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M4,6h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M5,6h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M6,6h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M7,6h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M8,6h1v1h-1z"   fill="#808996" />
+    <path d="M9,6h1v1h-1z"   fill="#808996" />
+    <path d="M10,6h1v1h-1z"  fill="#808996" />
+    <path d="M11,6h1v1h-1z"  fill="#5A616B" />
+    <path d="M2,7h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M3,7h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M4,7h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M5,7h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M6,7h1v1h-1z"   fill="#B0B8C4" />
+    <path d="M7,7h1v1h-1z"   fill="#808996" />
+    <path d="M8,7h1v1h-1z"   fill="#808996" />
+    <path d="M9,7h1v1h-1z"   fill="#808996" />
+    <path d="M10,7h1v1h-1z"  fill="#808996" />
+    <path d="M11,7h1v1h-1z"  fill="#5A616B" />
+    <path d="M3,8h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M4,8h1v1h-1z"   fill="#DBE0E6" />
+    <path d="M5,8h1v1h-1z"   fill="#5A616B" />
+    <path d="M6,8h1v1h-1z"   fill="#5A616B" />
+    <path d="M7,8h1v1h-1z"   fill="#5A616B" />
+    <path d="M8,8h1v1h-1z"   fill="#5A616B" />
+    <path d="M9,8h1v1h-1z"   fill="#5A616B" />
+    <path d="M10,8h1v1h-1z"  fill="#5A616B" />
+    <path d="M4,10h1v1h-1z"  fill="#4A94D6" />
+    <path d="M8,10h1v1h-1z"  fill="#4A94D6" />
+    <path d="M11,10h1v1h-1z" fill="#4A94D6" />
+    <path d="M4,11h1v1h-1z"  fill="#2E68A3" />
+    <path d="M8,11h1v1h-1z"  fill="#2E68A3" />
+    <path d="M11,11h1v1h-1z" fill="#2E68A3" />
+    <path d="M6,12h1v1h-1z"  fill="#4A94D6" />
+    <path d="M6,13h1v1h-1z"  fill="#2E68A3" />
+    <path d="M9,13h1v1h-1z"  fill="#4A94D6" />
+    <path d="M9,14h1v1h-1z"  fill="#2E68A3" />
+  </g>
+</svg>
