@@ -1,0 +1,30 @@
+name: Feature Request
+description: Here you can suggest an idea for a mod
+title: "[Feature] "
+labels:
+  - feature
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the new feature
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Photos/screenshots
+      description: Please attach photos/screenshots if necessary
+    validations:
+      required: false
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why?
+      description: Explain why this feature would be useful
+    validations:
+      required: false

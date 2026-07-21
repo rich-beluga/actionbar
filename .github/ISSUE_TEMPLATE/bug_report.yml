@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a problem with the mod
+title: "[Bug] "
+labels:
+  - bug
+
+body:
+  - type: input
+    id: minecraft_version
+    attributes:
+      label: Minecraft version
+      placeholder: "e.g 1.21.8"
+    validations:
+      required: true
+
+  - type: input
+    id: fabric_loader
+    attributes:
+      label: Fabric Loader version
+      placeholder: "e.g 0.19.2"
+    validations:
+      required: true
+
+  - type: input
+    id: fabric_api
+    attributes:
+      label: Fabric API version
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: Installation method
+      options:
+        - GitHub Release
+        - Manual build
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: mod_version
+    attributes:
+      label: Mod version
+      description: Release tag or commit hash
+      placeholder: "e.g v1.0.0 / 6429edf"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots
+      description: Paste logs or attach screenshots
