@@ -2,7 +2,7 @@ name: Feature Request
 description: Here you can suggest an idea for a mod
 title: "[Feature] "
 labels:
-  - feature
+  - enhancement
 
 body:
   - type: textarea
