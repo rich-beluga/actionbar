@@ -1,7 +1,6 @@
 package com.rich_beluga.actionbar;
 
-import com.rich_beluga.actionbar.hud.TimeHudElement;
-import com.rich_beluga.actionbar.hud.WeatherHudElement;
+import com.rich_beluga.actionbar.hud.ActionBarHudElement;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.minecraft.util.Identifier;
@@ -12,13 +11,8 @@ public class ActionBarInfoClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         HudElementRegistry.addLast(
-                Identifier.of(MOD_ID, "time_line"),
-                TimeHudElement::render
+                Identifier.of(MOD_ID, "action_bar"),
+                ActionBarHudElement::render
         );
-        HudElementRegistry.addLast(
-                Identifier.of(MOD_ID, "weather_line"),
-                WeatherHudElement::render
-        );
-        // Coordinates rendering is not implemented yet, see hud.CoordinatesHudElement.
     }
 }

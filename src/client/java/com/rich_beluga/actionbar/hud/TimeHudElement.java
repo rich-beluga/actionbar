@@ -1,21 +1,21 @@
 package com.rich_beluga.actionbar.hud;
 
 import com.rich_beluga.actionbar.ActionBarInfoClient;
-import com.rich_beluga.actionbar.data.Time;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Colors;
 import net.minecraft.util.Identifier;
 
 /*
- * Renders the clock icon and the current in-game time, right-aligned to the
- * screen's horizontal center so it lines up with WeatherHudElement
+ * Draws the clock icon and time text, left-aligned starting at x.
+ *
+ * Data fetching, caching, and the layout math (where x/y come from) all
+ * live in ActionBarHudElement - this class only knows how to draw an
+ * already-computed time string at an already-computed position.
  */
-public final class TimeHudElement {
+final class TimeHudElement {
     private TimeHudElement() {
         // Utility holder class, never instantiated.
     }
@@ -23,55 +23,20 @@ public final class TimeHudElement {
     private static final Identifier ICON_TIME =
             Identifier.of(ActionBarInfoClient.MOD_ID, "textures/gui/hud/clock.png");
 
-    private static final int ICON_SIZE = 16;
-    private static final int ICON_TEXT_GAP = 4;
-    private static final int CENTER_GAP = 3;
-    private static final int HOTBAR_GAP = 6;
-    private static final int HOTBAR_HEIGHT = 22;
-
-    private static final long UPDATE_INTERVAL_MS = 2000L;
-
-    private static long lastUpdateMs = 0L;
-    private static String cachedTimeText = "--:--";
-
-    public static void render(DrawContext context, RenderTickCounter tickCounter) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        ClientWorld world = client.world;
-
-        if (world == null || client.player == null) {
-            return;
-        }
-
-        long now = System.currentTimeMillis();
-        if (now - lastUpdateMs >= UPDATE_INTERVAL_MS) {
-            lastUpdateMs = now;
-            cachedTimeText = Time.format(world.getTimeOfDay());
-        }
-
-        drawLine(context, client, cachedTimeText);
-    }
-
-    private static void drawLine(DrawContext context, MinecraftClient client, String timeText) {
+    /*
+     * param x left edge to start drawing this element at
+     * param y top of the icon row, shared with every other element
+     */
+    static void render(DrawContext context, MinecraftClient client, String timeText, int x, int y) {
         TextRenderer textRenderer = client.textRenderer;
 
-        int timeTextWidth = textRenderer.getWidth(timeText);
-        int contentWidth = ICON_SIZE + ICON_TEXT_GAP + timeTextWidth;
-
-        int screenWidth = client.getWindow().getScaledWidth();
-        int screenHeight = client.getWindow().getScaledHeight();
-
-        // Right-align so the block ends just left of the screen's horizontal center.
-        int x = screenWidth / 2 - CENTER_GAP - contentWidth;
-
-        int hotbarTop = screenHeight - HOTBAR_HEIGHT;
-        int y = hotbarTop - HOTBAR_GAP - ICON_SIZE;
-        int textY = y + (ICON_SIZE - textRenderer.fontHeight) / 2;
-
-        int cursorX = x;
         context.drawTexture(RenderPipelines.GUI_TEXTURED, ICON_TIME,
-                cursorX, y, 0f, 0f, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
-        cursorX += ICON_SIZE + ICON_TEXT_GAP;
+                x, y, 0f, 0f,
+                ActionBarHudElement.ICON_SIZE, ActionBarHudElement.ICON_SIZE,
+                ActionBarHudElement.ICON_SIZE, ActionBarHudElement.ICON_SIZE);
 
-        context.drawTextWithShadow(textRenderer, timeText, cursorX, textY, Colors.WHITE);
+        int textX = x + ActionBarHudElement.ICON_SIZE + ActionBarHudElement.ICON_TEXT_GAP;
+        int textY = y + (ActionBarHudElement.ICON_SIZE - textRenderer.fontHeight) / 2;
+        context.drawTextWithShadow(textRenderer, timeText, textX, textY, Colors.WHITE);
     }
 }

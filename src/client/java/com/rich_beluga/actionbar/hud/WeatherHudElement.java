@@ -5,15 +5,16 @@ import com.rich_beluga.actionbar.data.Weather;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.util.Identifier;
 
-/**
- * Renders the current weather icon, left-aligned to the screen's horizontal
- * center so it lines up with TimeHudElement
+/*
+ * Draws the current weather icon, left-aligned starting at x
+ * No text label - just picks the right texture for the given state.
+ *
+ * Data fetching and caching live in ActionBarHudElement; this
+ * class only knows how to draw a given, already-computed weather state
  */
-public final class WeatherHudElement {
+final class WeatherHudElement {
     private WeatherHudElement() {
         // Utility holder class, never instantiated.
     }
@@ -25,43 +26,11 @@ public final class WeatherHudElement {
     private static final Identifier ICON_THUNDER =
             Identifier.of(ActionBarInfoClient.MOD_ID, "textures/gui/hud/thunder.png");
 
-    private static final int ICON_SIZE = 16;
-    private static final int CENTER_GAP = 3;
-    private static final int HOTBAR_GAP = 6;
-    private static final int HOTBAR_HEIGHT = 22;
-
-    private static final long UPDATE_INTERVAL_MS = 2000L;
-
-    private static long lastUpdateMs = 0L;
-    private static Weather cachedWeather = Weather.CLEAR;
-
-    public static void render(DrawContext context, RenderTickCounter tickCounter) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        ClientWorld world = client.world;
-
-        if (world == null || client.player == null) {
-            return;
-        }
-
-        long now = System.currentTimeMillis();
-        if (now - lastUpdateMs >= UPDATE_INTERVAL_MS) {
-            lastUpdateMs = now;
-            cachedWeather = Weather.of(world);
-        }
-
-        drawIcon(context, client, cachedWeather);
-    }
-
-    private static void drawIcon(DrawContext context, MinecraftClient client, Weather weather) {
-        int screenWidth = client.getWindow().getScaledWidth();
-        int screenHeight = client.getWindow().getScaledHeight();
-
-        // Left-align so the icon starts just right of the screen's horizontal center.
-        int x = screenWidth / 2 + CENTER_GAP;
-
-        int hotbarTop = screenHeight - HOTBAR_HEIGHT;
-        int y = hotbarTop - HOTBAR_GAP - ICON_SIZE;
-
+    /**
+     * param x left edge to start drawing this element at
+     * param y top of the icon row, shared with every other element
+     */
+    static void render(DrawContext context, MinecraftClient client, Weather weather, int x, int y) {
         Identifier icon = switch (weather) {
             case RAIN -> ICON_RAIN;
             case THUNDER -> ICON_THUNDER;
@@ -69,6 +38,8 @@ public final class WeatherHudElement {
         };
 
         context.drawTexture(RenderPipelines.GUI_TEXTURED, icon,
-                x, y, 0f, 0f, ICON_SIZE, ICON_SIZE, ICON_SIZE, ICON_SIZE);
+                x, y, 0f, 0f,
+                ActionBarHudElement.ICON_SIZE, ActionBarHudElement.ICON_SIZE,
+                ActionBarHudElement.ICON_SIZE, ActionBarHudElement.ICON_SIZE);
     }
 }
