@@ -29,6 +29,6 @@ jobs:
       - name: capture gradle cache
         uses: actions/upload-artifact@v7
         with:
-          name: gradle-cache-with-sources
-          path: ~/.gradle/
+          name: sources
+          path: .gradle/
           retention-days: 1
