@@ -7,6 +7,6 @@
 Shows in-game time and weather above the hotbar
 
 ## Screenshots
-<img src="./assets/2026-07-23_01.43.49.png" width="2340" height="1080" alt="creative" />
-<img src="./assets/2026-07-25_01.25.19.png" width="2340" height="1080" alt="survival_noarmor" />
-<img src="./assets/2026-07-25_01.25.31.png" width="2340" height="1080" alt="survival_armor" />
+<img src="./img/2026-07-23_01.43.49.png" width="2340" height="1080" alt="creative" />
+<img src="./img/2026-07-25_01.25.19.png" width="2340" height="1080" alt="survival_noarmor" />
+<img src="./img/2026-07-25_01.25.31.png" width="2340" height="1080" alt="survival_armor" />
