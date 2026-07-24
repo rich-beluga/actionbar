@@ -33,4 +33,19 @@ public final class VanillaHud {
 
         return interactionManager.getCurrentGameMode().isSurvivalLike();
     }
+
+    /*
+     * LivingEntity#getArmor() (net.minecraft.entity.LivingEntity, inherited
+     * by ClientPlayerEntity) - note the Yarn name has no 'u' (getArmor, not
+     * getArmour). Returns 0-20 armor points; vanilla only draws the armor
+     * row above health/hunger when this is > 0.
+     */
+    public static boolean hasArmor(MinecraftClient client) {
+        ClientPlayerEntity player = client.player;
+        if (player == null) {
+            return false;
+        }
+
+        return player.getArmor() > 0;
+    }
 }
