@@ -1,0 +1,8 @@
+- name: Generate sources
+  run: ./gradlew genSources
+
+- name: Upload Minecraft sources
+  uses: actions/upload-artifact@v7
+  with:
+    name: minecraft-sources
+    path: ~/.gradle
