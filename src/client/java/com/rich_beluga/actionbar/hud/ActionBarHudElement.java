@@ -48,7 +48,7 @@ public final class ActionBarHudElement {
      * height, since we can't read vanilla's own (private) layout
      * constants for them without a mixin. Bump this up/down to taste.
      */
-    private static final int EXTRA_HUD_LIFT = 20;
+    private static final int EXTRA_HUD_LIFT = 22;
 
     private static final String SEPARATOR = " | ";
 
