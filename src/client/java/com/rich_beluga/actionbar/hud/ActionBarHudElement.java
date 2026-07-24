@@ -48,11 +48,11 @@ public final class ActionBarHudElement {
      * height, since we can't read vanilla's own (private) layout
      * constants for them without a mixin. Bump this up/down to taste.
      */
-    private static final int EXTRA_HUD_LIFT = 19;
+    private static final int EXTRA_HUD_LIFT = 20;
 
     private static final String SEPARATOR = " | ";
 
-    private static final long UPDATE_INTERVAL_MS = 1000L;
+    private static final long UPDATE_INTERVAL_MS = 100L;
 
     private static long lastUpdateMs = 0L;
     private static String cachedTimeText = "--:--";
