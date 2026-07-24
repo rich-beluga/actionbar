@@ -1,7 +1,9 @@
 package com.rich_beluga.actionbar.hud;
 
+import com.rich_beluga.actionbar.data.HeldItemTooltip;
 import com.rich_beluga.actionbar.data.PlayerCoordinates;
 import com.rich_beluga.actionbar.data.Time;
+import com.rich_beluga.actionbar.data.VanillaHud;
 import com.rich_beluga.actionbar.data.Weather;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -39,6 +41,14 @@ public final class ActionBarHudElement {
     private static final int HOTBAR_WIDTH = 182;
     /** Vanilla hotbar is always this many pixels tall. */
     private static final int HOTBAR_HEIGHT = 22;
+    /*
+     * Extra vertical space to add above the hotbar when vanilla is also
+     * drawing the XP bar and/or the health/hunger/armor rows there (see
+     * VanillaHud#hasExtraHud) - eyeball-tuned to roughly their combined
+     * height, since we can't read vanilla's own (private) layout
+     * constants for them without a mixin. Bump this up/down to taste.
+     */
+    private static final int EXTRA_HUD_LIFT = 19;
 
     private static final String SEPARATOR = " | ";
 
@@ -58,12 +68,25 @@ public final class ActionBarHudElement {
             return;
         }
 
+        /*
+         * Must run every frame regardless of anything else below - it's
+         * also how HeldItemTooltip notices the held item/slot changed in
+         * the first place, so skipping this call while hidden would make
+         * it miss the change.
+         */
+        boolean heldItemNameShowing = HeldItemTooltip.isShowing(player);
+
         long now = System.currentTimeMillis();
         if (now - lastUpdateMs >= UPDATE_INTERVAL_MS) {
             lastUpdateMs = now;
             cachedTimeText = Time.format(world.getTimeOfDay());
             cachedWeather = Weather.of(world);
             cachedCoordinatesText = PlayerCoordinates.of(player).format();
+        }
+
+        if (heldItemNameShowing) {
+            // Let vanilla's own item-name overlay have the space above the hotbar to itself.
+            return;
         }
 
         drawBar(context, client);
@@ -94,8 +117,11 @@ public final class ActionBarHudElement {
         int hotbarCenterX = hotbarX + HOTBAR_WIDTH / 2;
         int hotbarTop = screenHeight - HOTBAR_HEIGHT;
 
+        /* Lift the whole bar clear of the XP bar / health / hunger / armor rows when they're showing. */
+        int extraHudLift = VanillaHud.hasExtraHud(client) ? EXTRA_HUD_LIFT : 0;
+
         int x = hotbarCenterX - totalWidth / 2;
-        int y = hotbarTop - HOTBAR_GAP - ICON_SIZE;
+        int y = hotbarTop - HOTBAR_GAP - extraHudLift - ICON_SIZE;
 
         int cursorX = x;
 
