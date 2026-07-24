@@ -1,8 +1,34 @@
-- name: Generate sources
-  run: ./gradlew genSources
+name: generate sources
 
-- name: Upload Minecraft sources
-  uses: actions/upload-artifact@v7
-  with:
-    name: minecraft-sources
-    path: ~/.gradle
+on:
+  workflow_dispatch:
+
+jobs:
+  sources:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v6
+
+      - name: validate gradle wrapper
+        uses: gradle/actions/wrapper-validation@v6
+
+      - name: setup jdk
+        uses: actions/setup-java@v5
+        with:
+          java-version: '21'
+          distribution: 'microsoft'
+
+      - name: make gradle wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: generate minecraft sources
+        run: ./gradlew genSources
+
+      - name: capture gradle cache
+        uses: actions/upload-artifact@v7
+        with:
+          name: gradle-cache-with-sources
+          path: ~/.gradle/
+          retention-days: 1
