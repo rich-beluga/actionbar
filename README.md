@@ -1,6 +1,6 @@
 # ActionBar+
 
-## <img src="./assets/fabric.svg" width="25" height="25" alt="fabric" />&nbsp;**For Minecraft 1.21.11 Fabric**
+## <img src="./assets/fabric.svg" width="25" height="25" alt="fabric" />&nbsp;**For Minecraft 26.2 Fabric**
 [![Download](https://img.shields.io/github/v/release/rich-beluga/actionbar?style=for-the-badge&logo=github)](https://github.com/rich-beluga/actionbar/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/rich-beluga/actionbar/total?style=for-the-badge&logo=github)](https://github.com/rich-beluga/actionbar/releases/latest)
 
