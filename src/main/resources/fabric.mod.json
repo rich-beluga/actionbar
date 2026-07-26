@@ -3,7 +3,7 @@
     "id": "actionbar",
     "version": "${version}",
     "name": "ActionBar+",
-    "description": "Shows in-game time and weather above the hotbar.",
+    "description": "Shows in-game time, weather and coordinates above the hotbar.",
     "authors": [
         "rich_beluga"
     ],
@@ -17,8 +17,8 @@
     },
     "depends": {
         "fabricloader": ">=0.19.3",
-        "minecraft": "~1.21.11",
-        "java": ">=21",
+        "minecraft": "~26.2",
+        "java": ">=25",
         "fabric-api": "*"
     }
 }
